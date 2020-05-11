@@ -1,0 +1,42 @@
+let gameData = {
+	"Counting": [
+		{"english": "1", "korean": "Hah Nah"},
+		{"english": "2", "korean": "Dul"},
+		{"english": "3", "korean": "Set"},
+		{"english": "4", "korean": "Net"},
+		{"english": "5", "korean": "Dah Suht"},
+		{"english": "6", "korean": "Yuh Suht"},
+		{"english": "7", "korean": "Il Gohp"},
+		{"english": "8", "korean": "Yuh Duhl"},
+		{"english": "9", "korean": "Ah Hohp"},
+		{"english": "10", "korean": "Yuhl"}
+	],
+	"Hand Techniques / Soo Ki": [
+		{"english": "Straight Punch", "korean": "Juhng Gwuhn"},
+		{"english": "Palm", "korean": "Pyuhng Soo"},
+		{"english": "Spear-hand", "korean": "Gwahn Soo"},
+		{"english": "Straight Spear-hand", "korean": "Jihk Gwahn Soo"},
+		{"english": "Reverse Knife-hand", "korean": "Yuhk Soo Doh"},
+		{"english": "Circle Knife-hand", "korean": "Hweh Juhn Soo Doh"},
+		{"english": "Back-fist", "korean": "Gahk Gwuhn"},
+		{"english": "Elbow", "korean": "Pahl Kum Chi"},
+		{"english": "Praying Mantis Fist", "korean": "Sah Mah Gwi Gwuhn"},
+		{"english": "Back-hand", "korean": "Sohn Deung Pyuhng Soo"},
+		{"english": "Reverse Palm", "korean": "Yuhm Pyuhng Soo"},
+		{"english": "Double Palm", "korean": "Ssang Pyuhng Soo"},
+		{"english": "Double Knife-hand", "korean": "Ssang Soo Doh"},
+		{"english": "Tiger's mouth fist", "korean": "Hoh Goo Gwuhn"},
+		{"english": "Tiger claw", "korean": "Hoh Gwuhn"},
+		{"english": "Little finger Hammer fist", "korean": "Baek Pahl Ki Gwuhn"},
+		{"english": "One-finger fist", "korean": "Il Ji Gwuhn"},
+		{"english": "Middle-knuckle fist", "korean": "Joong Chi Gwuhn"},
+		{"english": "Thumb", "korean": "Uhn Ji"},
+		{"english": "Four-finger Knuckle fist", "korean": "Sah Ji Gwuhn"},
+		{"english": "One finger", "korean": "Il Ji"},
+		{"english": "Two fingers", "korean": "Ee Ji"},
+		{"english": "Five fingers", "korean": "Oh Ji"},
+		{"english": "Praying Mantis block", "korean": "Sah Mah Gwi Mahk Ki"},
+		{"english": "Cross block", "korean": "X Mahk Ki"},
+		{"english": "Four Directional Blocking", "korean": "Ship Ja Mahk Ki"}
+	]
+};
