@@ -21,34 +21,6 @@ window.onload = function() {
 	}
 }
 
-function addBreak(divObj) {
-	let br = document.createElement("br");
-	divObj.appendChild(br);
-}
-
-function createCheckbox(name, value, id) {
-	var checkboxObj = document.createElement("input");
-	checkboxObj.type = "checkbox";
-	checkboxObj.name = name;
-	checkboxObj.value = value;
-	checkboxObj.id = id;
-	
-	return checkboxObj
-}
-
-function createLabel(text, checkbox=null) {
-	var labelObj = document.createElement("label");
-	
-	var textNode = document.createTextNode(text);
-	labelObj.appendChild(textNode);
-	
-	if (checkbox) {
-		labelObj.htmlFor = checkbox.id;
-	}
-	
-	return labelObj;
-}
-
 function startGame() {
 	var gameDiv = document.getElementById("game_wrapper");
 	gameDiv.innerHTML = "";
@@ -69,8 +41,9 @@ function startGame() {
 	}
 	
 	var questions = buildQuestions(selectedCategories, numberOfQuestions);
-	for (question in questions) {
-		gameDiv.appendChild(createLabel(questions[question] + " " + question));
+	for (var i=0; i < questions.length; i++) {
+		let question = questions[i];
+		gameDiv.appendChild(question.buildHTML());
 		addBreak(gameDiv);
 	}
 }

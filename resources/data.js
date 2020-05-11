@@ -1,15 +1,15 @@
 let gameData = {
 	"Counting": [
-		{"english": "1", "korean": "Hah Nah"},
-		{"english": "2", "korean": "Dul"},
-		{"english": "3", "korean": "Set"},
-		{"english": "4", "korean": "Net"},
-		{"english": "5", "korean": "Dah Suht"},
-		{"english": "6", "korean": "Yuh Suht"},
-		{"english": "7", "korean": "Il Gohp"},
-		{"english": "8", "korean": "Yuh Duhl"},
-		{"english": "9", "korean": "Ah Hohp"},
-		{"english": "10", "korean": "Yuhl"}
+		{"english": "One", "korean": "Hah Nah"},
+		{"english": "Two", "korean": "Dul"},
+		{"english": "Three", "korean": "Set"},
+		{"english": "Four", "korean": "Net"},
+		{"english": "Five", "korean": "Dah Suht"},
+		{"english": "Six", "korean": "Yuh Suht"},
+		{"english": "Seven", "korean": "Il Gohp"},
+		{"english": "Eight", "korean": "Yuh Duhl"},
+		{"english": "Nine", "korean": "Ah Hohp"},
+		{"english": "Ten", "korean": "Yuhl"}
 	],
 	"Hand Techniques / Soo Ki": [
 		{"english": "Straight Punch", "korean": "Juhng Gwuhn"},
