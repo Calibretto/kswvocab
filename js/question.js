@@ -7,17 +7,17 @@ class Question {
 		this.correctAnswerIndex = 0;
 	}
 	
-	pickOtherAnswers(categoryData, numberOfAnswers) {
+	pickOtherAnswers(categoryData, numberOfAnswers, key) {
 		let correctAnswer = this.questionAnswers[0];
 		var otherData = categoryData.filter(function(e) {
-			return e["korean"] != correctAnswer;
+			return e.values[key] != correctAnswer;
 		});
 		
 		otherData = shuffle(otherData);
 		while ( (this.questionAnswers.length < numberOfAnswers) &&
 				(otherData.length > 0) ) {
 			let data = otherData.pop();
-			this.questionAnswers.push(data["korean"]);
+			this.questionAnswers.push(data.values[key]);
 		}
 	}
 	
@@ -69,14 +69,21 @@ function buildQuestions(categories, numberOfQuestions) {
 		
 		let split = categorySplit[category];
 		for(var i=0; i < split; i++) {
-			var data = categoryData[i];
-			var title = data["english"];
-			var answer = data["korean"];
+			let data = categoryData[i];
+			var titleKey = "english";
+			var answerKey = "korean";
+			if (Math.random() > 0.5) {
+				titleKey = "korean";
+				answerKey = "english";
+			}
+			
+			let title = data.values[titleKey];
+			let answer = data.values[answerKey];
 		
 			var question = new Question(questions.length);
 			question.questionTitle = title;
 			question.questionAnswers.push(answer);
-			question.pickOtherAnswers(categoryData, 4);
+			question.pickOtherAnswers(categoryData, 4, answerKey);
 			
 			question.questionAnswers = shuffle(question.questionAnswers);
 			question.findCorrectAnswer(answer);
