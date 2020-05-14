@@ -29,24 +29,27 @@ function addBreak(divObj) {
 	divObj.appendChild(br);
 }
 
-function createCheckbox(name, value, id) {
-	var checkboxObj = document.createElement("input");
-	checkboxObj.type = "checkbox";
-	checkboxObj.name = name;
-	checkboxObj.value = value;
-	checkboxObj.id = id;
+function createInput(inputType, name, value, id, onclick=null) {
+	var inputObj = document.createElement("input");
+	inputObj.type = inputType;
+	inputObj.name = name;
+	inputObj.value = value;
+	inputObj.id = id;
+	inputObj.onclick = onclick;
 	
-	return checkboxObj
+	return inputObj;
+}
+
+function createCheckbox(name, value, id) {
+	return createInput("checkbox", name, value, id);
 }
 
 function createRadioButton(group, value, id) {
-	var radioObj = document.createElement("input");
-	radioObj.type = "radio";
-	radioObj.name = group;
-	radioObj.value = value;
-	radioObj.id = id;
-	
-	return radioObj;
+	return createInput("radio", group, value, id);
+}
+
+function createButton(value, id, onclick=null) {
+	return createInput("button", null, value, id, onclick);
 }
 
 function createLabel(text, parentObject=null) {

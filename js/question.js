@@ -1,7 +1,7 @@
 class Question {
 
-	constructor(questionNumber) {
-		this.questionNumber = questionNumber;
+	constructor() {
+		this.questionNumber = 0;
 		this.questionTitle = "Unkown";
 		this.questionAnswers = [];
 		this.correctAnswerIndex = 0;
@@ -30,22 +30,77 @@ class Question {
 		}
 	}
 	
-	buildHTML() {
+	questionDiv() {
+		return document.getElementById("question-" + this.questionNumber);
+	}
+	
+	correctAnswerListItem() {
+		return document.getElementById(this.questionDiv().id + "-answer-li-" + this.correctAnswerIndex);
+	}
+	
+	selectedAnswerListItem() {
+		return document.getElementById(this.questionDiv().id + "-answer-li-" + this.selectedAnswerIndex());
+	}
+	
+	submitButton() {
+		return document.getElementById("submit-" + this.questionDiv().id);
+	}
+	
+	nextButton() {
+		return document.getElementById("next-" + this.questionDiv().id);
+	}
+	
+	next() {
+		let selectedAnswerObj = this.questionDiv().querySelector("input[type='radio']:checked");
+		if (selectedAnswerObj != null) {
+			selectedAnswerObj.checked = false;
+		}
+		
+		this.submitButton().style.display = "none";
+		this.nextButton().style.display = "block";
+	}
+	
+	resetClasses() {
+		let listItems = this.questionDiv().querySelectorAll("li");
+		for (var i=0; i < listItems.length; i++) {
+			listItems[i].className = null;
+		}
+	}
+	
+	selectedAnswerIndex() {
+		let selectedAnswerObj = this.questionDiv().querySelector("input[type='radio']:checked");
+		if (selectedAnswerObj != null) {
+			return selectedAnswerObj.value;
+		} else {
+			return -1;
+		}
+	}
+	
+	buildHTML(questionNumber) {
+		this.questionNumber = questionNumber;
+	
 		var mainDiv = createDiv("question-" + this.questionNumber);
 		
-		var titleHeader = createHeader(1, this.questionTitle);
+		var titleHeader = createHeader(1, "Question " + this.questionNumber);
 		mainDiv.appendChild(titleHeader);
+		
+		var questionLabel = createLabel("What is...?");
+		mainDiv.appendChild(questionLabel)
+		
+		var questionHeader = createHeader(2, this.questionTitle);
+		mainDiv.appendChild(questionHeader);
 		
 		var listObj = document.createElement("ul");
 		listObj.id = "answers";
 		
 		for (var i=0; i < this.questionAnswers.length; i++) {
 			var listItemObj = document.createElement("li");
+			listItemObj.id = mainDiv.id + "-answer-li-" + i;
 			
 			let answer = this.questionAnswers[i];
 			let radioButtonGroup = mainDiv.id + "-answers";
 			let radioButtonID = mainDiv.id + "-answer-" + i;
-			let radioButtonObj = createRadioButton(radioButtonGroup, answer, radioButtonID);
+			let radioButtonObj = createRadioButton(radioButtonGroup, i, radioButtonID);
 			let answerLabel = createLabel(answer, radioButtonObj);
 			
 			listItemObj.appendChild(radioButtonObj);
@@ -55,9 +110,61 @@ class Question {
 		}
 		mainDiv.appendChild(listObj);
 		
+		addBreak(mainDiv);
+		addBreak(mainDiv);
+		
+		let quitButton = createButton("Quit", "quit-" + mainDiv.id, quitGame);
+		mainDiv.appendChild(quitButton);
+		
+		let question = this;
+		let answerFunction = function() {
+			submitQuestion(question);
+		};
+		let submitButton = createButton("Submit", "submit-" + mainDiv.id, answerFunction);
+		mainDiv.appendChild(submitButton);
+		
+		let nextFunction = function() {
+			nextQuestion(question);
+		}
+		let nextButton = createButton("Next", "next-" + mainDiv.id, nextFunction);
+		nextButton.style.display = "none";
+		mainDiv.appendChild(nextButton);
+		
 		return mainDiv;
 	}
 
+}
+
+function nextQuestion(question) {
+	question.questionDiv().style.display = "none";
+	
+	let nextQuestionIndex = question.questionNumber + 1;
+	var nextQuestionDiv = document.getElementById("question-" + nextQuestionIndex);
+	if (nextQuestionDiv != null) {
+		nextQuestionDiv.style.display = "block";
+	} else {
+		quitGame();
+	}
+}
+
+function submitQuestion(question) {
+	let selectedAnswerIndex = question.selectedAnswerIndex();
+	if (selectedAnswerIndex < 0) {
+		return;
+	}
+	
+	let correctAnswerListItem = question.correctAnswerListItem();
+	let selectedAnswerListItem = question.selectedAnswerListItem();
+	
+	question.resetClasses();
+	if (selectedAnswerIndex == question.correctAnswerIndex) {
+		selectedAnswerListItem.className = "right";
+	} else {
+		selectedAnswerListItem.className = "wrong";
+		correctAnswerListItem.className = "correct";
+	}
+	
+	question.next();
 }
 
 function buildQuestions(categories, numberOfQuestions, numberOfAnswers) {
@@ -82,7 +189,7 @@ function buildQuestions(categories, numberOfQuestions, numberOfAnswers) {
 			let title = data.values[titleKey];
 			let answer = data.values[answerKey];
 		
-			var question = new Question(questions.length);
+			var question = new Question();
 			question.questionTitle = title;
 			question.questionAnswers.push(answer);
 			question.pickOtherAnswers(categoryData, numberOfAnswers, answerKey);

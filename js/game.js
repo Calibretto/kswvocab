@@ -20,7 +20,6 @@ window.onload = function() {
 		cbDiv.appendChild(lbl);
 		
 		categoriesDiv.appendChild(cbDiv);
-		addBreak(categoriesDiv);
 	}
 }
 
@@ -48,7 +47,26 @@ function startGame() {
 	var questions = buildQuestions(selectedCategories, numberOfQuestions, numberOfAnswers);
 	for (var i=0; i < questions.length; i++) {
 		let question = questions[i];
-		gameDiv.appendChild(question.buildHTML());
+		gameDiv.appendChild(question.buildHTML(i + 1));
 		addBreak(gameDiv);
+	}
+	
+	var gameSetupWrapper = document.getElementById("game-setup-wrapper");
+	gameSetupWrapper.style.display = "none";
+	
+	var firstQuestion = document.getElementById("question-1");
+	firstQuestion.style.display = "block";
+}
+
+function quitGame() {
+	if (window.confirm("Are you sure you want to quit?")) {
+		// ToDo: Just remove all divs
+		var question = null;
+		for (var q=1; question = document.getElementById("question-" + q); q++) {
+			question.style.display = "none";
+		}
+	
+		var gameSetupWrapper = document.getElementById("game-setup-wrapper");
+		gameSetupWrapper.style.display = "block";
 	}
 }
