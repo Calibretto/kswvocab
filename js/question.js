@@ -24,7 +24,7 @@ class Question {
 	findCorrectAnswer(answer) {
 		for(var i=0; i < this.questionAnswers.length; i++) {
 			if (this.questionAnswers[i] == answer) {
-				this.correctAnswerIndex == i;
+				this.correctAnswerIndex = i;
 				break;
 			}
 		}

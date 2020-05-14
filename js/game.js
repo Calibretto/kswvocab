@@ -48,7 +48,6 @@ function startGame() {
 	for (var i=0; i < questions.length; i++) {
 		let question = questions[i];
 		gameDiv.appendChild(question.buildHTML(i + 1));
-		addBreak(gameDiv);
 	}
 	
 	var gameSetupWrapper = document.getElementById("game-setup-wrapper");
