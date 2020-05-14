@@ -60,7 +60,7 @@ class Question {
 
 }
 
-function buildQuestions(categories, numberOfQuestions) {
+function buildQuestions(categories, numberOfQuestions, numberOfAnswers) {
 	var questions = [];
 	var categorySplit = calculateCategorySplit(categories, numberOfQuestions);
 	
@@ -85,7 +85,7 @@ function buildQuestions(categories, numberOfQuestions) {
 			var question = new Question(questions.length);
 			question.questionTitle = title;
 			question.questionAnswers.push(answer);
-			question.pickOtherAnswers(categoryData, 4, answerKey);
+			question.pickOtherAnswers(categoryData, numberOfAnswers, answerKey);
 			
 			question.questionAnswers = shuffle(question.questionAnswers);
 			question.findCorrectAnswer(answer);

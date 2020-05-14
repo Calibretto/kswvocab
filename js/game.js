@@ -1,6 +1,7 @@
 var categoriesDiv = null;
 var selectedCategories = [];
 var numberOfQuestions = 10;
+var numberOfAnswers = 2;
 var questions = [];
 
 window.onload = function() {
@@ -42,7 +43,9 @@ function startGame() {
 		return;
 	}
 	
-	var questions = buildQuestions(selectedCategories, numberOfQuestions);
+	numberOfAnswers = document.querySelector('input[name="difficulty"]:checked').value;
+	
+	var questions = buildQuestions(selectedCategories, numberOfQuestions, numberOfAnswers);
 	for (var i=0; i < questions.length; i++) {
 		let question = questions[i];
 		gameDiv.appendChild(question.buildHTML());

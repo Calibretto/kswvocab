@@ -15,6 +15,28 @@ ul {
 	padding: 0px;
 }
 
+#difficulty li {
+	border: 1px lightblue solid;
+	border-radius: 4px;
+	width: 80%;
+	padding: 0px;
+	margin: 5px auto;
+}
+
+#difficulty input {
+	display: none;
+}
+
+#difficulty input:checked + label {
+	background-color: lightblue;
+}
+
+#difficulty label {
+	width: 100%;
+	display: block;
+	padding: 3px 0px;
+}
+
 #answers li {
 	border: 1px lightblue solid;
 	border-radius: 4px;
