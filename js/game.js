@@ -14,15 +14,17 @@ window.onload = function() {
 		let cb = createCheckbox(key, key, key);
 		let lbl = createLabel(key, cb);
 		
-		categoriesDiv.appendChild(cb);
-		categoriesDiv.appendChild(lbl);
+		let cbDiv = createDiv("cb-button");
+		cbDiv.appendChild(cb);
+		cbDiv.appendChild(lbl);
 		
+		categoriesDiv.appendChild(cbDiv);
 		addBreak(categoriesDiv);
 	}
 }
 
 function startGame() {
-	var gameDiv = document.getElementById("game_wrapper");
+	var gameDiv = document.getElementById("game-wrapper");
 	gameDiv.innerHTML = "";
 	
 	var selectedCheckboxes = categoriesDiv.querySelectorAll("input[type='checkbox']:checked");

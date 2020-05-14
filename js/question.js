@@ -31,18 +31,20 @@ class Question {
 	}
 	
 	buildHTML() {
-		var mainDiv = createDiv("question_" + this.questionNumber);
+		var mainDiv = createDiv("question-" + this.questionNumber);
 		
 		var titleHeader = createHeader(1, this.questionTitle);
 		mainDiv.appendChild(titleHeader);
 		
 		var listObj = document.createElement("ul");
+		listObj.id = "answers";
+		
 		for (var i=0; i < this.questionAnswers.length; i++) {
 			var listItemObj = document.createElement("li");
 			
 			let answer = this.questionAnswers[i];
-			let radioButtonGroup = mainDiv.id + "_answers";
-			let radioButtonID = mainDiv.id + "_answer_" + i;
+			let radioButtonGroup = mainDiv.id + "-answers";
+			let radioButtonID = mainDiv.id + "-answer-" + i;
 			let radioButtonObj = createRadioButton(radioButtonGroup, answer, radioButtonID);
 			let answerLabel = createLabel(answer, radioButtonObj);
 			
