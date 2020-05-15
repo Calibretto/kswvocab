@@ -34,6 +34,16 @@ div.progressRight {
 	background-color: green;
 }
 
+#score-wrapper {
+	display: none;
+}
+
+#score-label {
+	text-decoration: bold;
+	margin: auto;
+	font-size: 3em;
+}
+
 ul {
 	list-style: none;
 	margin: 0px;
@@ -134,7 +144,6 @@ div[id^="question-"] {
 input[id^="submit-"] {
 	float: right;
 }
-
 
 input[id^="next-"] {
 	float: right;
