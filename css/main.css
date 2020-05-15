@@ -9,6 +9,31 @@ body {
 	text-align: center;
 }
 
+#progress-wrapper {
+	width: 100%;
+	height: 15px;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	flex-wrap: nowrap;
+	padding-top: 20px;
+	justify-content: space-around;
+}
+
+div[id^="progress-question-"] {
+	border: 1px lightblue solid;
+	display: block;
+	width: 1em;
+}
+
+div.progressWrong {
+	background-color: red;
+}
+
+div.progressRight {
+	background-color: green;
+}
+
 ul {
 	list-style: none;
 	margin: 0px;

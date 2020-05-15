@@ -27,6 +27,9 @@ function startGame() {
 	var gameDiv = document.getElementById("game-wrapper");
 	gameDiv.innerHTML = "";
 	
+	var progressDiv = document.getElementById("progress-wrapper");
+	progressDiv.innerHTML = "";
+	
 	var selectedCheckboxes = categoriesDiv.querySelectorAll("input[type='checkbox']:checked");
 	
 	selectedCategories = {};
@@ -48,6 +51,9 @@ function startGame() {
 	for (var i=0; i < questions.length; i++) {
 		let question = questions[i];
 		gameDiv.appendChild(question.buildHTML(i + 1));
+		
+		let progressSection = createDiv("progress-question-" + (i + 1));
+		progressDiv.appendChild(progressSection);
 	}
 	
 	var gameSetupWrapper = document.getElementById("game-setup-wrapper");
@@ -59,11 +65,11 @@ function startGame() {
 
 function quitGame() {
 	if (window.confirm("Are you sure you want to quit?")) {
-		// ToDo: Just remove all divs
-		var question = null;
-		for (var q=1; question = document.getElementById("question-" + q); q++) {
-			question.style.display = "none";
-		}
+		var gameDiv = document.getElementById("game-wrapper");
+		gameDiv.innerHTML = "";
+	
+		var progressDiv = document.getElementById("progress-wrapper");
+		progressDiv.innerHTML = "";
 	
 		var gameSetupWrapper = document.getElementById("game-setup-wrapper");
 		gameSetupWrapper.style.display = "block";

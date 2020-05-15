@@ -155,13 +155,16 @@ function submitQuestion(question) {
 	
 	let correctAnswerListItem = question.correctAnswerListItem();
 	let selectedAnswerListItem = question.selectedAnswerListItem();
+	let progressDiv = document.getElementById("progress-question-" + question.questionNumber);
 	
 	question.resetClasses();
 	if (selectedAnswerIndex == question.correctAnswerIndex) {
 		selectedAnswerListItem.className = "right";
+		progressDiv.className = "progressRight";
 	} else {
 		selectedAnswerListItem.className = "wrong";
 		correctAnswerListItem.className = "correct";
+		progressDiv.className = "progressWrong";
 	}
 	
 	question.next();
