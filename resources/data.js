@@ -22,7 +22,7 @@ let gameData = {
 		{"values":{"english": "Elbow", "korean": "Pahl Kum Chi"}},
 		{"values":{"english": "Praying Mantis Fist", "korean": "Sah Mah Gwi Gwuhn"}},
 		{"values":{"english": "Back-hand", "korean": "Sohn Deung Pyuhng Soo"}},
-		{"values":{"english": "Reverse Palm", "korean": "Yuhm Pyuhng Soo"}},
+		{"values":{"english": "Reverse Palm", "korean": "Yuhk Pyuhng Soo"}},
 		{"values":{"english": "Double Palm", "korean": "Ssang Pyuhng Soo"}},
 		{"values":{"english": "Double Knife-hand", "korean": "Ssang Soo Doh"}},
 		{"values":{"english": "Tiger's mouth fist", "korean": "Hoh Goo Gwuhn"}},

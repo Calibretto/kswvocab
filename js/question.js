@@ -149,6 +149,7 @@ function nextQuestion(question) {
 		nextQuestionDiv.style.display = "block";
 	} else {
 		let scoreLabel = document.getElementById("score-label");
+		scoreLabel.innerHTML = "";
 		scoreLabel.appendChild(document.createTextNode(correctAnswers + " / " + numberOfQuestions));
 	
 		let scoreDiv = document.getElementById("score-wrapper");
