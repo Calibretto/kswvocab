@@ -49,6 +49,7 @@ function startGame() {
 	}
 	
 	numberOfAnswers = document.querySelector('input[name="difficulty"]:checked').value;
+	numberOfQuestions = Math.max(10, selectedCheckboxes.length * 5);
 	
 	var questions = buildQuestions(selectedCategories, numberOfQuestions, numberOfAnswers);
 	for (var i=0; i < questions.length; i++) {
