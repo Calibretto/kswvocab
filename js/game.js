@@ -31,6 +31,7 @@ function startGame() {
 	var progressDiv = document.getElementById("progress-wrapper");
 	progressDiv.innerHTML = "";
 	
+	var totalAvailableQuestions = 0;
 	correctAnswers = 0;
 	
 	var selectedCheckboxes = categoriesDiv.querySelectorAll("input[type='checkbox']:checked");
@@ -40,6 +41,7 @@ function startGame() {
 		var cb = selectedCheckboxes[i];
 		var category = cb.value;
 		
+		totalAvailableQuestions += gameData[category].length;
 		selectedCategories[category] = gameData[category];
 	}
 	
@@ -50,6 +52,7 @@ function startGame() {
 	
 	numberOfAnswers = document.querySelector('input[name="difficulty"]:checked').value;
 	numberOfQuestions = Math.max(10, selectedCheckboxes.length * 5);
+	numberOfQuestions = Math.min(numberOfQuestions, totalAvailableQuestions);
 	
 	var questions = buildQuestions(selectedCategories, numberOfQuestions, numberOfAnswers);
 	for (var i=0; i < questions.length; i++) {
